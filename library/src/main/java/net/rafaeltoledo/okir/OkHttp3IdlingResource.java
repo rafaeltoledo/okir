@@ -43,7 +43,7 @@ public class OkHttp3IdlingResource implements Interceptor, IdlingResource {
 
     @Override
     public String getName() {
-        return "net.rafaeltoledo.okhttpidlingresource.OkHttp3IdlingResource";
+        return OkHttp3IdlingResource.class.getCanonicalName();
     }
 
     @Override
