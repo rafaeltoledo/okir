@@ -7,14 +7,8 @@ import java.io.IOException;
 
 public class OkHttpIdlingResource extends Okir implements Interceptor {
 
-    private final String[] strictUrls;
-
-    public OkHttpIdlingResource() {
-        this.strictUrls = new String[0];
-    }
-
     public OkHttpIdlingResource(String... strictUrls) {
-        this.strictUrls = strictUrls;
+        super(strictUrls);
     }
 
     @Override

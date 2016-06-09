@@ -6,14 +6,9 @@ import okhttp3.Interceptor;
 import okhttp3.Response;
 
 public class OkHttp3IdlingResource extends Okir implements Interceptor {
-    private final String[] strictUrls;
-
-    public OkHttp3IdlingResource() {
-        this.strictUrls = new String[0];
-    }
 
     public OkHttp3IdlingResource(String... strictUrls) {
-        this.strictUrls = strictUrls;
+        super(strictUrls);
     }
 
     @Override
