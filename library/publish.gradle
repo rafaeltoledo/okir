@@ -1,0 +1,35 @@
+final Properties localConfig = new Properties()
+localConfig.load(file("$rootDir/local.properties").newDataInputStream())
+
+apply from: "$rootDir/gradle/maven-config.gradle"
+apply from: "$rootDir/gradle/artifacts-config.gradle"
+apply plugin: 'com.jfrog.bintray'
+
+group = GROUP
+version = VERSION_NAME
+
+bintray {
+
+    user = localConfig.getProperty('bintray.user')
+    key = localConfig.getProperty('bintray.apikey')
+
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'okir'
+        desc = DESCRIPTION
+        websiteUrl = PROJECT_URL
+        vcsUrl = SCM_URL
+        licenses = ['Apache-2.0']
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = DESCRIPTION
+            gpg {
+                sign = true
+                passphrase = localConfig.getProperty("bintray.gpg.password")
+            }
+        }
+
+    }
+}

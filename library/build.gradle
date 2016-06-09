@@ -1,0 +1,26 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        textReport true
+        textOutput 'stdout'
+    }
+}
+
+dependencies {
+    compile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    provided 'com.squareup.okhttp3:okhttp:3.3.1'
+    provided 'com.squareup.okhttp:okhttp:2.7.5'
+}
+
+apply from: 'publish.gradle'
