@@ -4,16 +4,20 @@ import android.support.annotation.VisibleForTesting;
 
 import okhttp3.OkHttpClient;
 
-public class ApiCaller {
+public final class ApiCaller {
 
-    private static OkHttpClient CLIENT = new OkHttpClient();
+    private static OkHttpClient client = new OkHttpClient();
+
+    private ApiCaller() {
+        // No instances!
+    }
 
     public static OkHttpClient getClient() {
-        return CLIENT;
+        return client;
     }
 
     @VisibleForTesting
     public static void setClient(OkHttpClient client) {
-        CLIENT = client;
+        ApiCaller.client = client;
     }
 }

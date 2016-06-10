@@ -3,7 +3,11 @@ package net.rafaeltoledo.okir.helper;
 import net.rafaeltoledo.okir.OkHttp3IdlingResource;
 import net.rafaeltoledo.okir.OkHttpIdlingResource;
 
-public class ReplaceHelper {
+public final class ReplaceHelper {
+
+    private ReplaceHelper() {
+        // No instances!
+    }
 
     public static okhttp3.OkHttpClient wrap(okhttp3.OkHttpClient client, OkHttp3IdlingResource idlingResource) {
         return client.newBuilder()

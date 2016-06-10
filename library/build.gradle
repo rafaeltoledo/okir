@@ -21,4 +21,5 @@ dependencies {
     provided 'com.squareup.okhttp:okhttp:2.7.5'
 }
 
+apply from: "$rootDir/gradle/linters.gradle"
 apply from: 'publish.gradle'

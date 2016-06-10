@@ -1,0 +1,17 @@
+apply plugin: 'checkstyle'
+
+checkstyle {
+    toolVersion = '6.19'
+}
+
+task checkstyle(type: Checkstyle, group: 'verification') {
+    configFile file("$rootDir/checkstyle.xml")
+
+    ignoreFailures false
+    showViolations true
+
+    source 'src'
+    include '**/*.java'
+
+    classpath = files()
+}

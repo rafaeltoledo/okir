@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 abstract class Okir implements IdlingResource {
 
-    AtomicInteger busy = new AtomicInteger(0);
+    private AtomicInteger busy = new AtomicInteger(0);
     private ResourceCallback callback;
 
     protected abstract String getIdlingResourceName();

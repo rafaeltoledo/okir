@@ -27,7 +27,7 @@ public class MyActivityTest {
     public ActivityTestRule<MainActivity> activityRule =
             new ActivityTestRule<>(MainActivity.class, false, false);
 
-    OkHttp3IdlingResource idlingResource = new OkHttp3IdlingResource("https://api.github.com");
+    private OkHttp3IdlingResource idlingResource = new OkHttp3IdlingResource("https://api.github.com");
 
     @Before
     public void registerIdlingResource() {
