@@ -1,5 +1,7 @@
 final Properties localConfig = new Properties()
-localConfig.load(file("$rootDir/local.properties").newDataInputStream())
+if (file("$rootDir/local.properties").exists()) {
+    localConfig.load(file("$rootDir/local.properties").newDataInputStream())
+}
 
 apply from: "$rootDir/gradle/maven-config.gradle"
 apply from: "$rootDir/gradle/artifacts-config.gradle"
@@ -27,7 +29,7 @@ bintray {
             desc = DESCRIPTION
             gpg {
                 sign = true
-                passphrase = localConfig.getProperty("bintray.gpg.password")
+                passphrase = localConfig.getProperty('bintray.gpg.password')
             }
         }
 
