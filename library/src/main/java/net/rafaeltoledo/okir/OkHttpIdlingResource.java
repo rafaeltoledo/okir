@@ -26,13 +26,13 @@ public class OkHttpIdlingResource extends Okir implements Interceptor {
                     busy = true;
                 }
             }
-            this.busy.addAndGet(busy ? 1 : 0);
+            getCounter().addAndGet(busy ? 1 : 0);
         } else {
-            busy.incrementAndGet();
+            getCounter().incrementAndGet();
         }
 
         Response response = chain.proceed(chain.request());
-        busy.decrementAndGet();
+        getCounter().decrementAndGet();
         return response;
     }
 

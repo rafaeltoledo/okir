@@ -29,4 +29,7 @@ abstract class Okir implements IdlingResource {
         this.callback = callback;
     }
 
+    protected AtomicInteger getCounter() {
+        return busy;
+    }
 }
