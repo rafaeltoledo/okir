@@ -3,6 +3,8 @@ OkHttp Idling Resource
 
 A helper class that implements both an Espresso `IdlingResource` and an OkHttp 2 and 3 `Interceptor`s.
 
+[![Build Status](https://api.travis-ci.org/rafaeltoledo/okir.svg)](https://travis-ci.org/rafaeltoledo/okir)
+
 Usage
 -----
 
