@@ -67,18 +67,7 @@ OkHttp3IdlingResource okir = new OkHttp3IdlingResource("https://api.github.com")
 Download
 --------
 
-The library will be soon published on JCenter. Meanwhile, add the Bintray repository:
-
-```groovy
-allprojects {
-    repositories {
-        jcenter()
-        maven { url 'https://dl.bintray.com/rafaeltoledo/maven/'}
-    }
-}
-```
-
-and then add the library as a Android Test dependency:
+The library is available on JCenter. Add the library as an Android Test dependency:
 
 ```groovy
 dependencies {
