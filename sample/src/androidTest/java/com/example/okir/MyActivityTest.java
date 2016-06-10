@@ -32,7 +32,7 @@ public class MyActivityTest {
     @Before
     public void registerIdlingResource() {
         Espresso.registerIdlingResources(idlingResource);
-        OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient client = ApiCaller.getClient().newBuilder()
                 .addInterceptor(idlingResource)
                 .build();
         ApiCaller.setClient(client);
