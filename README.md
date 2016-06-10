@@ -23,12 +23,12 @@ register it on Espresso,
 ```java
     @Before
     public void setUp() {
-        Espresso.registerIdlingResources(idlingResource);
+        Espresso.registerIdlingResources(okir);
     }
 
     @After
     public void tearDown() {
-        Espresso.unregisterIdlingResources(idlingResource);
+        Espresso.unregisterIdlingResources(okir);
     }
 ```
 
@@ -38,7 +38,7 @@ add it to your `OkHttpClient` and replace it on your production code.
     ...
     @Before
     public void setUp() {
-        Espresso.registerIdlingResources(idlingResource);
+        Espresso.registerIdlingResources(okir);
         OkHttpClient client = ApiCaller.getClient().newBuilder()
                 .addInterceptor(okir)
                 .build();
