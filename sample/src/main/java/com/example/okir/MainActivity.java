@@ -13,7 +13,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String URL = "https://api.github.com/repos/square/okhttp/commits";
+    private static final String URL = "https://google.com";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
