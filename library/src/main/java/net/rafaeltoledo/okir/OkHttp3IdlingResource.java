@@ -13,18 +13,7 @@ public class OkHttp3IdlingResource extends Okir implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        if (strictUrls.length != 0) {
-            boolean busy = false;
-            for (String url : strictUrls) {
-                if (chain.request().url().toString().startsWith(url)) {
-                    busy = true;
-                }
-            }
-            getCounter().addAndGet(busy ? 1 : 0);
-        } else {
-            getCounter().incrementAndGet();
-        }
-
+        processRequest(chain.request().url().toString());
         Response response = chain.proceed(chain.request());
         getCounter().decrementAndGet();
         return response;
