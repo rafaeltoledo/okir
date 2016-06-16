@@ -27,13 +27,13 @@ android {
 
 dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:24.0.0'
 
     androidTestCompile project(':library')
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
-    androidTestCompile 'com.android.support:support-annotations:23.4.0'
+    androidTestCompile 'com.android.support:support-annotations:24.0.0'
     androidTestCompile 'com.squareup.okhttp3:mockwebserver:3.3.1'
 }
 
