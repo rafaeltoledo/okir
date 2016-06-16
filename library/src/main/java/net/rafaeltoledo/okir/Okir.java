@@ -5,9 +5,17 @@ import android.support.test.espresso.IdlingResource;
 import java.util.concurrent.atomic.AtomicInteger;
 
 abstract class Okir implements IdlingResource {
-
     private AtomicInteger busy = new AtomicInteger(0);
+    private final String[] strictUrls;
     private ResourceCallback callback;
+
+    Okir() {
+        this.strictUrls = new String[0];
+    }
+
+    Okir(String... strictUrls) {
+        this.strictUrls = strictUrls;
+    }
 
     protected abstract String getIdlingResourceName();
 
@@ -18,10 +26,11 @@ abstract class Okir implements IdlingResource {
 
     @Override
     public boolean isIdleNow() {
-        if (busy.get() == 0 && callback != null) {
+        int currentValue = getCounter().get();
+        if (currentValue == 0 && callback != null) {
             callback.onTransitionToIdle();
         }
-        return busy.get() == 0;
+        return currentValue == 0;
     }
 
     @Override
@@ -29,7 +38,21 @@ abstract class Okir implements IdlingResource {
         this.callback = callback;
     }
 
-    protected AtomicInteger getCounter() {
+    void processRequest(String requestUrl) {
+        if (strictUrls.length != 0) {
+            boolean busy = false;
+            for (String url : strictUrls) {
+                if (requestUrl.startsWith(url)) {
+                    busy = true;
+                }
+            }
+            getCounter().addAndGet(busy ? 1 : 0);
+        } else {
+            getCounter().incrementAndGet();
+        }
+    }
+
+    AtomicInteger getCounter() {
         return busy;
     }
 }

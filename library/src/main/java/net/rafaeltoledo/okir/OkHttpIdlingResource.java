@@ -7,30 +7,13 @@ import java.io.IOException;
 
 public class OkHttpIdlingResource extends Okir implements Interceptor {
 
-    private final String[] strictUrls;
-
-    public OkHttpIdlingResource() {
-        this.strictUrls = new String[0];
-    }
-
     public OkHttpIdlingResource(String... strictUrls) {
-        this.strictUrls = strictUrls;
+        super(strictUrls);
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        if (strictUrls.length != 0) {
-            boolean busy = false;
-            for (String url : strictUrls) {
-                if (chain.request().httpUrl().url().toString().startsWith(url)) {
-                    busy = true;
-                }
-            }
-            getCounter().addAndGet(busy ? 1 : 0);
-        } else {
-            getCounter().incrementAndGet();
-        }
-
+        processRequest(chain.request().httpUrl().url().toString());
         Response response = chain.proceed(chain.request());
         getCounter().decrementAndGet();
         return response;
