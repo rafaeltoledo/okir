@@ -3,7 +3,7 @@ OkHttp Idling Resource
 
 A helper class that implements both an Espresso `IdlingResource` and an OkHttp 2 and 3 `Interceptor`s.
 
-[![Build Status](https://api.travis-ci.org/rafaeltoledo/okir.svg)](https://travis-ci.org/rafaeltoledo/okir)
+[![Build Status](https://api.travis-ci.org/rafaeltoledo/okir.svg)](https://travis-ci.org/rafaeltoledo/okir)  [![Android Arsenal](http://img.shields.io/badge/Android%20Arsenal-OkHttp%20Idling%20Resource-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3897)
 
 Usage
 -----
